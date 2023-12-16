@@ -1,19 +1,16 @@
-package org.example.day2;
+package com.antcer00.day2;
 
 import java.util.*;
 import java.util.List;
-
-
-import static org.example.day2.CubeColor.*;
 
 public class Part1 extends Day2 {
 
     private static final Map<CubeColor, Integer> BAG = new HashMap<>();
 
     static {
-        BAG.put(RED, 12);
-        BAG.put(GREEN, 13);
-        BAG.put(BLUE, 14);
+        BAG.put(CubeColor.RED, 12);
+        BAG.put(CubeColor.GREEN, 13);
+        BAG.put(CubeColor.BLUE, 14);
     }
 
     public static void main(String[] args) {

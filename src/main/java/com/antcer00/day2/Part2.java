@@ -1,9 +1,7 @@
-package org.example.day2;
+package com.antcer00.day2;
 
 import java.util.List;
 import java.util.Set;
-
-import static org.example.day2.CubeColor.*;
 
 public class Part2 extends Day2 {
 
@@ -19,9 +17,9 @@ public class Part2 extends Day2 {
     }
 
     private int calculatePowerOfMinCubes(Game game) {
-        CubeExtraction minRed = findMinCubesByColor(game, RED);
-        CubeExtraction minGreen = findMinCubesByColor(game, GREEN);
-        CubeExtraction minBlue = findMinCubesByColor(game, BLUE);
+        CubeExtraction minRed = findMinCubesByColor(game, CubeColor.RED);
+        CubeExtraction minGreen = findMinCubesByColor(game, CubeColor.GREEN);
+        CubeExtraction minBlue = findMinCubesByColor(game, CubeColor.BLUE);
         return powerOfCubes(minRed, minGreen, minBlue);
     }
 
@@ -40,7 +38,7 @@ public class Part2 extends Day2 {
     }
 
     private int powerOfCubes(CubeExtraction e1, CubeExtraction e2, CubeExtraction e3) {
-        if (e1.getColor() != RED && e2.getColor() != GREEN && e3.getColor() != BLUE) {
+        if (e1.getColor() != CubeColor.RED && e2.getColor() != CubeColor.GREEN && e3.getColor() != CubeColor.BLUE) {
             throw new RuntimeException("The 3 extractions must be of different colors. Namely RED, GREEN, BLUE");
         }
         return e1.getNumberOfCubes() * e2.getNumberOfCubes() * e3.getNumberOfCubes();

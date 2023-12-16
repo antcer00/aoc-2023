@@ -1,10 +1,8 @@
-package org.example.day15;
+package com.antcer00.day15;
 
 import lombok.*;
 
-import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor

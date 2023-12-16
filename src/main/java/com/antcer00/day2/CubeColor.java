@@ -1,4 +1,4 @@
-package org.example.day2;
+package com.antcer00.day2;
 
 public enum CubeColor {
     RED("red"), BLUE("blue"), GREEN("green");

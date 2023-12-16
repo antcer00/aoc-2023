@@ -1,4 +1,4 @@
-package org.example.day6;
+package com.antcer00.day6;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

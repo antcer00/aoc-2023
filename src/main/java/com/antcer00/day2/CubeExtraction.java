@@ -1,4 +1,4 @@
-package org.example.day6;
+package com.antcer00.day2;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Getter
 @Setter
-public class RaceInfo {
+public class CubeExtraction {
 
-    private long avaiableTime;
+    private CubeColor color;
+    private int numberOfCubes;
 
-    private long distanceRecord;
 }

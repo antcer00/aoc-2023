@@ -1,4 +1,4 @@
-package org.example.day2;
+package com.antcer00.day2;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Set;
 
 import static java.lang.Integer.parseInt;
-import static org.example.day2.CubeColor.getCubeColorFromValue;
 
 public class Day2 {
 
@@ -65,7 +64,7 @@ public class Day2 {
     private CubeExtraction populateExtraction(String line) {
         line = line.trim();
         return new CubeExtraction(
-                getCubeColorFromValue(line.split(" ")[1]),
+                CubeColor.getCubeColorFromValue(line.split(" ")[1]),
                 Integer.parseInt(line.split(" ")[0])
         );
     }

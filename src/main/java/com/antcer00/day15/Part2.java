@@ -1,4 +1,4 @@
-package org.example.day15;
+package com.antcer00.day15;
 
 import java.util.ArrayList;
 import java.util.List;

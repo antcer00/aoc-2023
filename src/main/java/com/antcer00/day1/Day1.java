@@ -1,4 +1,4 @@
-package org.example.day1;
+package com.antcer00.day1;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

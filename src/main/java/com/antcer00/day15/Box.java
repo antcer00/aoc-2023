@@ -1,4 +1,4 @@
-package org.example.day15;
+package com.antcer00.day15;
 
 import lombok.*;
 
