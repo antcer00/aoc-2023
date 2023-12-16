@@ -13,13 +13,10 @@ public class Part2 extends Day1 {
 
     public static void main(String[] args) {
         Part2 part2 = new Part2();
-        long startTime = System.nanoTime();
         List<String> lines = part2.getLines();
         List<Integer> numbers = part2.getNumbersFromLines(lines);
         int sum = part2.sumIntegers(numbers);
         System.out.println(sum);
-        long elapsedTime = System.nanoTime() - startTime;
-        System.out.println("Total execution time: " + elapsedTime / 1000000 + "ms");
     }
 
     protected int getFirstAndLastDigit(String line) {

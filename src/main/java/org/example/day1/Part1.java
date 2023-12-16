@@ -8,13 +8,10 @@ public class Part1 extends Day1 {
 
     public static void main(String[] args) {
         Part1 part1 = new Part1();
-        long startTime = System.nanoTime();
         List<String> lines = part1.getLines();
         List<Integer> numbers = part1.getNumbersFromLines(lines);
         int sum = part1.sumIntegers(numbers);
         System.out.println(sum);
-        long elapsedTime = System.nanoTime() - startTime;
-        System.out.println("Total execution time: " + elapsedTime / 1000000 + "ms");
     }
 
     protected int getFirstAndLastDigit(String line) {
