@@ -73,14 +73,18 @@ public class Day3 {
 
     protected boolean isPartNumber(NumberWithPosition number, List<SymbolWithPosition> symbols) {
         for (SymbolWithPosition symbol : symbols) {
-            if (areCoordinatesWithinRange(symbol.getPos(), number.getStartPos()) || areCoordinatesWithinRange(symbol.getPos(), number.getEndPos())) {
+            if (isNumberNearSymbol(number, symbol)) {
                 return true;
             }
         }
         return false;
     }
 
-    protected boolean areCoordinatesWithinRange(Coordinate c1, Coordinate c2) {
+    protected boolean isNumberNearSymbol(NumberWithPosition number, SymbolWithPosition symbol) {
+        return areCoordinatesWithinRange(symbol.getPos(), number.getStartPos()) || areCoordinatesWithinRange(symbol.getPos(), number.getEndPos());
+    }
+
+    private boolean areCoordinatesWithinRange(Coordinate c1, Coordinate c2) {
         int distanceX = c1.getPosX() - c2.getPosX();
         int distanceY = c1.getPosY() - c2.getPosY();
         int distance = (int) Math.sqrt(distanceX * distanceX + distanceY * distanceY);

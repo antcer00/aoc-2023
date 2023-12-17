@@ -29,7 +29,7 @@ public class Part2 extends Day3 {
         }
         Set<Integer> partNumbers = new HashSet<>();
         for (NumberWithPosition number : numbers) {
-            if (areCoordinatesWithinRange(symbol.getPos(), number.getStartPos()) || areCoordinatesWithinRange(symbol.getPos(), number.getEndPos())) {
+            if (isNumberNearSymbol(number, symbol)) {
                 partNumbers.add(number.getNumber());
             }
         }
