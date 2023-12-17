@@ -17,13 +17,6 @@ public class Day3 {
         List<String> lines = day3.getLines();
         List<NumberWithPosition> numbers = day3.getNumbersWithPosition(lines);
         List<SymbolWithPosition> symbols = day3.getSymbolsWithPosition(lines);
-        for (SymbolWithPosition symbol : symbols) {
-            System.out.println(symbol.getSymbol());
-        }
-        for (NumberWithPosition number : numbers) {
-            System.out.println(number.getNumber());
-        }
-
         System.out.println(day3.sumNumbersNearSumbols(numbers, symbols));
     }
 
