@@ -7,18 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.max;
-
 public class Day3 {
-
-    public static void main(String[] args) {
-        Day3 day3 = new Day3();
-        List<String> lines = day3.getLines();
-        List<NumberWithPosition> numbers = day3.getNumbersWithPosition(lines);
-        List<SymbolWithPosition> symbols = day3.getSymbolsWithPosition(lines);
-        System.out.println(day3.sumNumbersNearSumbols(numbers, symbols));
-    }
 
     private static final String INPUT_PATH = "src/main/resources/input/day3/input.txt";
 
@@ -39,7 +28,7 @@ public class Day3 {
         return lines;
     }
 
-    private List<NumberWithPosition> getNumbersWithPosition(List<String> lines) {
+    protected List<NumberWithPosition> getNumbersWithPosition(List<String> lines) {
         List<NumberWithPosition> numbers = new ArrayList<>();
         String numberAsString = "";
         for (int posY = 0; posY < lines.size(); posY++) {
@@ -48,22 +37,18 @@ public class Day3 {
                 if (Character.isDigit(character)) {
                     numberAsString += String.valueOf(character);
                     if (posX == lines.get(posY).length() - 1) {
-                        if (isEmpty(numberAsString))
+                        if (numberAsString.isEmpty())
                             continue;
                         numberAsString = addNumberAndReset(numbers, numberAsString, posY, posX);
                     }
                 } else {
-                    if (isEmpty(numberAsString))
+                    if (numberAsString.isEmpty())
                         continue;
                     numberAsString = addNumberAndReset(numbers, numberAsString, posY, posX);
                 }
             }
         }
         return numbers;
-    }
-
-    private static boolean isEmpty(String numberAsString) {
-        return numberAsString.isEmpty();
     }
 
     private static String addNumberAndReset(List<NumberWithPosition> numbers, String numberAsString, int posY, int posX) {
@@ -74,7 +59,7 @@ public class Day3 {
         return numberAsString;
     }
 
-    private List<SymbolWithPosition> getSymbolsWithPosition(List<String> lines) {
+    protected List<SymbolWithPosition> getSymbolsWithPosition(List<String> lines) {
         List<SymbolWithPosition> symbols = new ArrayList<>();
         for (int posY = 0; posY < lines.size(); posY++) {
             for (int posX = 0; posX < lines.get(posY).length(); posX++) {
@@ -86,16 +71,16 @@ public class Day3 {
         return symbols;
     }
 
-    private boolean isNumberNearASymbol(NumberWithPosition number, List<SymbolWithPosition> symbols) {
+    protected boolean isPartNumber(NumberWithPosition number, List<SymbolWithPosition> symbols) {
         for (SymbolWithPosition symbol : symbols) {
-            if (areCoordinateWithinRange(symbol.getPos(), number.getStartPos()) || areCoordinateWithinRange(symbol.getPos(), number.getEndPos())) {
+            if (areCoordinatesWithinRange(symbol.getPos(), number.getStartPos()) || areCoordinatesWithinRange(symbol.getPos(), number.getEndPos())) {
                 return true;
             }
         }
         return false;
     }
 
-    private boolean areCoordinateWithinRange(Coordinate c1, Coordinate c2) {
+    protected boolean areCoordinatesWithinRange(Coordinate c1, Coordinate c2) {
         int distanceX = c1.getPosX() - c2.getPosX();
         int distanceY = c1.getPosY() - c2.getPosY();
         int distance = (int) Math.sqrt(distanceX * distanceX + distanceY * distanceY);
@@ -105,17 +90,7 @@ public class Day3 {
         return false;
     }
 
-    private int sumNumbersNearSumbols(List<NumberWithPosition> numbers, List<SymbolWithPosition> symbols) {
-        int accumulator = 0;
-        for (NumberWithPosition number : numbers) {
-            if (isNumberNearASymbol(number, symbols)) {
-                accumulator += number.getNumber();
-            }
-        }
-        return accumulator;
-    }
-
-    private boolean isSymbol(char c) {
+    protected boolean isSymbol(char c) {
         return AVAILABLE_SYMBOLS.contains(c);
     }
 }
