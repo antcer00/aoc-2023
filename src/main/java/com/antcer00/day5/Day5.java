@@ -25,15 +25,15 @@ public class Day5 {
         return lines;
     }
 
-    protected List<Long> findLocations(List<CategoryMap<Category, Category>> categoryMaps, List<Long> seedNumbers) {
-        List<Long> locations = new ArrayList<>();
+    protected Set<Long> findLocations(List<CategoryMap<Category, Category>> categoryMaps, Set<Long> seedNumbers) {
+        Set<Long> locations = new HashSet<>();
         for (long seedNumber : seedNumbers) {
             locations.add(findLocation(seedNumber, categoryMaps));
         }
         return locations;
     }
 
-    private long findLocation(long seedNumber, List<CategoryMap<Category, Category>> categoryMaps) {
+    protected long findLocation(long seedNumber, List<CategoryMap<Category, Category>> categoryMaps) {
         long valueForNextMap = seedNumber;
         for (CategoryMap<Category, Category> categoryMap : categoryMaps) {
             for (Interval interval : categoryMap.getIntervals()) {
@@ -46,11 +46,11 @@ public class Day5 {
         return valueForNextMap;
     }
 
-    protected List<Long> getSeedNumbers(String line) {
+    protected Set<Long> getSeedNumbers(String line) {
         String[] seedNumbers = line.split(":")[1].trim().split(" ");
         return Arrays.stream(seedNumbers)
                 .map(Long::valueOf)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     protected List<CategoryMap<Category, Category>> getCategoryMaps(List<String> lines) {
