@@ -6,17 +6,12 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-public class Day4 {
+import static java.lang.Integer.parseInt;
 
-    public static void main(String[] args) {
-        Day4 day4 = new Day4();
-        List<String> lines = day4.getLines();
-        List<Card> cards = day4.getCards(lines);
-        List<Integer> cardValues = day4.getCardValues(cards);
-        System.out.println(day4.sumValues(cardValues));
-    }
+public class Day4 {
 
     private static final String INPUT_PATH = "src/main/resources/input/day4/input.txt";
 
@@ -37,6 +32,7 @@ public class Day4 {
         List<Card> cards = new ArrayList<>();
         for (String line : lines) {
             Card card = new Card();
+            card.setCardId(parseInt(line.split(":")[0].split("\\s+")[1]));
             card.setWinningNumbers(
                     Arrays.stream(line.split(":")[1].split("\\|")[0].trim().split("\\s+"))
                             .map(Integer::valueOf)
@@ -52,26 +48,14 @@ public class Day4 {
         return cards;
     }
 
-    private List<Integer> getCardValues(List<Card> cards) {
-        List<Integer> values = new ArrayList<>();
-        for (Card card : cards) {
-            values.add(computeCardvalue(card));
-        }
-        return values;
-    }
-
-    private Integer computeCardvalue(Card card) {
-        int cardvalue = 1;
-        for (int winningNumber : card.getWinningNumbers()) {
-            if (card.getNumbersYouHave().contains(winningNumber)) {
-                cardvalue *= 2;
-            }
-        }
-        return cardvalue == 1 ? 0 : cardvalue / 2;
-    }
-
-    private int sumValues(List<Integer> values) {
+    protected int sumValues(List<Integer> values) {
         return values.stream().reduce(0, Integer::sum);
     }
+
+    protected int sumValues(Map<?, Integer> map) {
+        return map.values().stream().reduce(0, Integer::sum);
+    }
+
+
 
 }

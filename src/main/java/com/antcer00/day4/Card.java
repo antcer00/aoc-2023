@@ -12,6 +12,7 @@ import java.util.Set;
 @Getter
 @Setter
 public class Card {
+    private int cardId;
     private Set<Integer> winningNumbers;
     private Set<Integer> numbersYouHave;
 }
