@@ -9,14 +9,9 @@ public class Part2 extends Day4 {
         List<String> lines = part2.getLines();
         List<Card> cards = part2.getCards(lines);
         Map<Integer, Integer> copiesPerCard = part2.initCopies(cards);
-        int i = 0;
         while (!cards.isEmpty()) {
-            i++;
             System.out.println("Size of cards List: " + cards.size());
-            long startTime = System.nanoTime();
             part2.computeCopiesForEachCard(cards, copiesPerCard);
-            long elapsedTime = System.nanoTime() - startTime;
-            System.out.println("Total execution time iternation n." + i + " : " + elapsedTime / 1000000 + "ms");
         }
         System.out.println(part2.sumValues(copiesPerCard));
     }
