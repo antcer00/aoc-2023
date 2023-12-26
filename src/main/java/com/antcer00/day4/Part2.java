@@ -7,47 +7,47 @@ public class Part2 extends Day4 {
     public static void main(String[] args) {
         Part2 part2 = new Part2();
         List<String> lines = part2.getLines();
-        List<Card> cards = part2.getCards(lines);
-        Map<Integer, Integer> copiesPerCard = part2.initCopies(cards);
-        while (!cards.isEmpty()) {
-            System.out.println("Size of cards List: " + cards.size());
-            part2.computeCopiesForEachCard(cards, copiesPerCard);
+        List<ScratchCard> scratchCards = part2.getCards(lines);
+        Map<Integer, Integer> copiesPerCard = part2.initCopies(scratchCards);
+        while (!scratchCards.isEmpty()) {
+            System.out.println("Size of cards List: " + scratchCards.size());
+            part2.computeCopiesForEachCard(scratchCards, copiesPerCard);
         }
         System.out.println(part2.sumValues(copiesPerCard));
     }
 
 
 
-    private void computeCopiesForEachCard(List<Card> cards, Map<Integer, Integer> copiesPerCard) {
-        List<Card> newCards = new ArrayList<>();
-        for (Card card : cards) {
-            int matchingNumbers = getMatchingNumbers(card);
-            for (int i = card.getCardId() + 1; i <= card.getCardId() + matchingNumbers; i++) {
+    private void computeCopiesForEachCard(List<ScratchCard> scratchCards, Map<Integer, Integer> copiesPerCard) {
+        List<ScratchCard> newScratchCards = new ArrayList<>();
+        for (ScratchCard scratchCard : scratchCards) {
+            int matchingNumbers = getMatchingNumbers(scratchCard);
+            for (int i = scratchCard.getCardId() + 1; i <= scratchCard.getCardId() + matchingNumbers; i++) {
                 copiesPerCard.replace(i, copiesPerCard.get(i) + 1);
                 int finalI = i;
-                newCards.add(cards.stream().filter(c -> c.getCardId() == finalI).findFirst().get());
+                newScratchCards.add(scratchCards.stream().filter(c -> c.getCardId() == finalI).findFirst().get());
             }
         }
-        cards.clear();
-        cards.addAll(newCards);
+        scratchCards.clear();
+        scratchCards.addAll(newScratchCards);
     }
 
 
 
-    private Map<Integer, Integer> initCopies(List<Card> cards) {
+    private Map<Integer, Integer> initCopies(List<ScratchCard> scratchCards) {
         Map<Integer, Integer> copiesPerCard = new HashMap<>();
-        for (Card card : cards) {
-            copiesPerCard.put(card.getCardId(), 1);
+        for (ScratchCard scratchCard : scratchCards) {
+            copiesPerCard.put(scratchCard.getCardId(), 1);
         }
         return copiesPerCard;
     }
 
 
 
-    private int getMatchingNumbers(Card card) {
+    private int getMatchingNumbers(ScratchCard scratchCard) {
         int matches = 0;
-        for (int winningNumber : card.getWinningNumbers()) {
-            if (card.getNumbersYouHave().contains(winningNumber)) {
+        for (int winningNumber : scratchCard.getWinningNumbers()) {
+            if (scratchCard.getNumbersYouHave().contains(winningNumber)) {
                 matches++;
             }
         }

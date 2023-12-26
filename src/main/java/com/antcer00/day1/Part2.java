@@ -44,7 +44,7 @@ public class Part2 extends Day1 {
 
     private DigitWithPosition getPositionFirstStringDigit(String line) {
         Set<DigitWithPosition> digitWithposition = new HashSet<>();
-        for (Digits digit : Digits.values()) {
+        for (Digit digit : Digit.values()) {
             int digitPosition = 0;
             if ((digitPosition = line.indexOf(digit.label)) >= 0) {
                 digitWithposition.add(new DigitWithPosition(digit.numericValue, digitPosition));
@@ -57,7 +57,7 @@ public class Part2 extends Day1 {
 
     private DigitWithPosition getPositionLastStringDigit(String line) {
         Set<DigitWithPosition> digitWithposition = new HashSet<>();
-        for (Digits digit : Digits.values()) {
+        for (Digit digit : Digit.values()) {
             int digitPosition = 0;
             if ((digitPosition = line.lastIndexOf(digit.label)) >= 0) {
                 digitWithposition.add(new DigitWithPosition(digit.numericValue, digitPosition));

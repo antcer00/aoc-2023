@@ -11,7 +11,7 @@ import java.util.Set;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Card {
+public class ScratchCard {
     private int cardId;
     private Set<Integer> winningNumbers;
     private Set<Integer> numbersYouHave;

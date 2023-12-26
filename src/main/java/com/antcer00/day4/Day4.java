@@ -28,24 +28,24 @@ public class Day4 {
         return lines;
     }
 
-    protected List<Card> getCards(List<String> lines) {
-        List<Card> cards = new ArrayList<>();
+    protected List<ScratchCard> getCards(List<String> lines) {
+        List<ScratchCard> scratchCards = new ArrayList<>();
         for (String line : lines) {
-            Card card = new Card();
-            card.setCardId(parseInt(line.split(":")[0].split("\\s+")[1]));
-            card.setWinningNumbers(
+            ScratchCard scratchCard = new ScratchCard();
+            scratchCard.setCardId(parseInt(line.split(":")[0].split("\\s+")[1]));
+            scratchCard.setWinningNumbers(
                     Arrays.stream(line.split(":")[1].split("\\|")[0].trim().split("\\s+"))
                             .map(Integer::valueOf)
                             .collect(Collectors.toSet())
             );
-            card.setNumbersYouHave(
+            scratchCard.setNumbersYouHave(
                     Arrays.stream(line.split(":")[1].split("\\|")[1].trim().split("\\s+"))
                             .map(Integer::valueOf)
                             .collect(Collectors.toSet())
             );
-            cards.add(card);
+            scratchCards.add(scratchCard);
         }
-        return cards;
+        return scratchCards;
     }
 
     protected int sumValues(List<Integer> values) {

@@ -1,6 +1,6 @@
 package com.antcer00.day1;
 
-public enum Digits {
+public enum Digit {
 
     ONE("one", 1),
     TWO("two", 2),
@@ -16,7 +16,7 @@ public enum Digits {
 
     public final int numericValue;
 
-    Digits(String label, int numericValue) {
+    Digit(String label, int numericValue) {
         this.label = label;
         this.numericValue = numericValue;
     }
