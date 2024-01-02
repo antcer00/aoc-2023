@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+import static com.antcer00.utils.Utils.sumValues;
+
 public class Part1 extends Day11 {
 
     public static void main(String[] args) {
@@ -16,7 +18,7 @@ public class Part1 extends Day11 {
         Set<Point> galaxies = part1.getGalaxies(universe);
         Set<Pair> pairs = part1.getPairs(galaxies);
         List<Integer> distances = part1.computeDistances(pairs);
-        System.out.println(Utils.sumValues(distances));
+        System.out.println(sumValues(distances));
     }
 
 
