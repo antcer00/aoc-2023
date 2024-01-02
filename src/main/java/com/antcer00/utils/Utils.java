@@ -4,6 +4,8 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 public final class Utils {
@@ -21,5 +23,12 @@ public final class Utils {
             throw new RuntimeException(e);
         }
         return lines;
+    }
+
+    public static double sumValues(Collection<? extends Number>... collections) {
+        return Arrays.stream(collections)
+                .flatMap(Collection::stream)
+                .mapToDouble(Number::doubleValue)
+                .sum();
     }
 }
